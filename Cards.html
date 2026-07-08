@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store - New Arrivals & Featured</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Custom styles for animations and specific theme colors */
+        body {
+            /* Deep dark blue background matching the image */
+            background-color: #060B14; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .card-bg {
+            /* Lighter dark blue for cards */
+            background-color: #111A2E; 
+        }
+
+        /* --- Card Stroke Animation --- */
+        /* We use an SVG rectangle overlaid on the card to create the drawing effect */
+        .stroke-rect {
+            fill: none;
+            stroke: #3b82f6; /* Tailwind blue-500 */
+            stroke-width: 3;
+            /* pathLength="100" makes dasharray calculations easy (percentages) */
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100; /* Start fully hidden */
+            transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        /* On card hover, animate the offset to 0 to "draw" the border */
+        .group:hover .stroke-rect {
+            stroke-dashoffset: 0;
+            opacity: 1;
+        }
+
+        /* --- Button Stroke Animation --- */
+        /* Same logic for the 'Buy Now' button as requested */
+        .btn-stroke-rect {
+            fill: none;
+            stroke: #ffffff; /* White stroke for button */
+            stroke-width: 2;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            transition: stroke-dashoffset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Trigger button animation on hover */
+        .group-btn:hover .btn-stroke-rect {
+            stroke-dashoffset: 0;
+        }
+    </style>
+</head>
+<body class="text-white antialiased min-h-screen pb-24">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        
+        <!-- === New Arrivals Section === -->
+        <div class="mb-24">
+            <h2 class="text-center text-3xl font-bold tracking-[0.25em] mb-12 uppercase text-gray-100">
+                New Arrivals
+            </h2>
+            <!-- Grid Container -->
+            <div id="new-arrivals-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- === Featured Products Section === -->
+        <div>
+            <h2 class="text-center text-3xl font-bold tracking-[0.25em] mb-12 uppercase text-gray-100">
+                Featured Products
+            </h2>
+            <!-- Grid Container -->
+            <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Data structure representing the shoes shown in the user's image
+        const newArrivals = [
+            { name: "Nike Rinmota", price: "$65.00", img: "https://pngimg.com/d/running_shoes_PNG5816.png" },
+            { name: "Nivia Ashtang", price: "$50.00", img: "https://pngimg.com/d/running_shoes_PNG5823.png" },
+            { name: "Nike Mercurial", price: "$35.00", img: "https://pngimg.com/d/running_shoes_PNG5817.png" },
+            { name: "Nike By You", price: "$40.00", img: "https://pngimg.com/d/running_shoes_PNG5824.png" },
+            { name: "Morelia NEO", price: "$25.00", img: "https://pngimg.com/d/running_shoes_PNG5816.png" },
+            { name: "Sneakers", price: "$30.00", img: "https://pngimg.com/d/running_shoes_PNG5823.png" },
+            { name: "Shadow Mehog", price: "$25.00", img: "https://pngimg.com/d/running_shoes_PNG5817.png" },
+            { name: "Breathable", price: "$45.00", img: "https://pngimg.com/d/running_shoes_PNG5824.png" }
+        ];
+
+        // Bottom row featured items
+        const featuredProducts = [
+            { name: "Shoes", price: "$00.00", img: "https://pngimg.com/d/running_shoes_PNG5816.png" },
+            { name: "Shoes", price: "$00.00", img: "https://pngimg.com/d/running_shoes_PNG5816.png" },
+            { name: "Shoes", price: "$00.00", img: "https://pngimg.com/d/running_shoes_PNG5816.png" },
+            { name: "Shoes", price: "$00.00", img: "https://pngimg.com/d/running_shoes_PNG5816.png" }
+        ];
+
+        // Shared description for all cards
+        const commonDescription = "Discover premium running, training, and lifestyle shoes designed for comfort, durability, and peak performance.";
+
+        // Fallback image handling in case the transparent PNGs fail to load
+        const fallbackImg = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80";
+
+        // Function to generate the HTML string for a single card
+        function createCard(item) {
+            return `
+                <div class="group relative card-bg rounded-xl p-5 flex flex-col h-[380px] cursor-pointer transition-transform duration-300 hover:-translate-y-1 shadow-lg">
+                    
+                    <!-- SVG Overlay for Card Stroke Animation -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none rounded-xl" xmlns="http://www.w3.org/2000/svg">
+                        <!-- rx/ry match the Tailwind 'rounded-xl' border radius (12px) -->
+                        <rect class="stroke-rect" x="0" y="0" width="100%" height="100%" rx="12" ry="12" pathLength="100" />
+                    </svg>
+
+                    <!-- Shoe Image Container -->
+                    <div class="h-40 w-full mb-6 mt-2 flex items-center justify-center relative z-10 px-2">
+                        <img src="${item.img}" 
+                             alt="${item.name}" 
+                             class="max-h-full max-w-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6"
+                             onerror="this.onerror=null; this.src='${fallbackImg}'; this.className='max-h-full max-w-full object-cover rounded-md';">
+                    </div>
+
+                    <!-- Card Text Content -->
+                    <div class="flex-grow flex flex-col relative z-10">
+                        <h3 class="text-[1.1rem] font-medium mb-1.5 text-gray-100">${item.name}</h3>
+                        <p class="text-[0.65rem] text-gray-400 leading-relaxed mb-6 pr-2">${commonDescription}</p>
+
+                        <!-- Footer: Price and Button -->
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-xl font-bold tracking-wide">${item.price}</span>
+                            
+                            <!-- Buy Now Button -->
+                            <button class="group-btn relative bg-[#2563EB] hover:bg-blue-500 text-white text-[0.7rem] px-5 py-2 rounded shadow-md transition-colors duration-300">
+                                <span class="relative z-10 font-semibold tracking-wide">Buy Now</span>
+                                
+                                <!-- SVG Overlay for Button Stroke Animation -->
+                                <svg class="absolute inset-0 w-full h-full pointer-events-none rounded" xmlns="http://www.w3.org/2000/svg">
+                                    <rect class="btn-stroke-rect" x="0" y="0" width="100%" height="100%" rx="4" ry="4" pathLength="100" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to inject generated cards into a specific container
+        function renderGrid(containerId, data) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map(item => createCard(item)).join('');
+        }
+
+        // Initialize grids when DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            renderGrid('new-arrivals-grid', newArrivals);
+            renderGrid('featured-grid', featuredProducts);
+        });
+    </script>
+</body>
+</html>
