@@ -13,26 +13,40 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body class="overflow-x-hidden">
+  <body>
     <nav>
       <div class="flex w-full bg-pink h-22.5 items-center">
-        <div class="flex gap-24 w-125 ml-84">
-          <h2 class="text-xl font-bold"><a href="">Home </a></h2>
-          <h2 class="text-xl font-bold"><a href="">Item </a></h2>
-          <h2 class="text-xl font-bold"><a href="">About us</a></h2>
+        <div
+          class="flex gap-10 w-125 ml-3 sm:ml-3 sm:gap-10 md:ml-20 md:gap-20 lg:ml-40 lg:gap-24"
+        >
+          <h2 class="text-md sm:text-md md:text-xl lg:text-2xl font-bold">
+            <a href="">Home </a>
+          </h2>
+          <h2 class="text-md sm:text-md md:text-xl lg:text-2xl font-bold">
+            <a href="">Item </a>
+          </h2>
+          <h2
+            class="text-md sm:text-md md:text-xl lg:text-2xl font-bold whitespace-nowrap"
+          >
+            <a href="">About us</a>
+          </h2>
         </div>
-        <div class="flex ml-32">
+        <div class="flex ml-8 sm:ml-8 md:ml-10 lg:ml-50">
           <input
             type="text"
-            class="drop-shadow-bl placeholder:font-semibold placeholder: drop-shadow-2xl placeholder:text-gray-400 shadow-[0_10px_20px_rgba(0,0,0,0.15)] outline-none rounded-lg bg-gray-200 h-10 w-62.5 px-4"
+            class="drop-shadow-bl placeholder:font-semibold placeholder: drop-shadow-2xl placeholder:text-gray-400 shadow-[0_10px_20px_rgba(0,0,0,0.15)] outline-none rounded-lg bg-gray-200 h-9 w-44 px-4 sm:h-9 sm:w-44 md:w-56 md:h-10 lg:w-74 lg:h-10"
             placeholder="Search"
           />
-          <i class="fa-solid fa-magnifying-glass text-2xl mt-2 ml-2"></i>
+          <i
+            class="fa-solid fa-magnifying-glass text-2xl mt-2 ml-2 sm:text-lg md:text-xl lg:text-2xl"
+          ></i>
         </div>
-        <div
-          class="flex justify-end w-12 h-12 bg-gray-300 rounded-[400px] ml-52"
-        >
-          <i class="fa-solid fa-user text-2xl text-black mr-2.25 mt-2.5"></i>
+        <div class=" ml-12 sm:ml-12 md:ml-30 lg:ml-60">
+          <div
+            class="flex justify-end w-12 h-12 bg-gray-300 rounded-[400px] "
+          >
+            <i class="fa-solid fa-user text-2xl text-black mr-2.25 mt-2.5"></i>
+          </div>
         </div>
       </div>
     </nav>
@@ -41,13 +55,13 @@
       <div class="bg-black w-full h-175 relative sm:h-175 md:h-187.5 lg:h-175">
         <div>
           <h1
-            class="text-5xl text-amber-50 absolute top-52 left-40 font-extrabold lg:text-5xl lg:top-50 lg:left-40 md:top-32 md:left-32 md:text-5xl sm:text-6xl sm:top-6 sm:left-55"
+            class="text-6xl text-amber-50 absolute top-6 left-55 font-extrabold lg:text-5xl lg:top-50 lg:left-40 md:top-20 md:left-70 md:text-7xl sm:text-6xl sm:top-6 sm:left-55 "
           >
             DO IT NOW. <br />
             RUN ON AIR
           </h1>
           <p
-            class="text-white absolute top-87.5 left-40 sm:left-55 sm:text-base sm:top-52 md:top-64 md:left-32 md:text-shadow-md lg:top-87.5 lg:left-40"
+            class="text-white absolute top-52 left-55 sm:left-55 sm:text-base sm:top-52 md:top-130 md:left-80 md:text-shadow-md lg:top-87.5 lg:left-40"
           >
             Shop premium sports apparel, footwear, and <br />
             equipment designed to help you perform at <br />
@@ -56,10 +70,10 @@
         </div>
         <img
           src="/img/Nike Black.png"
-          class="absolute justify-end w-190 object-contain drop-shadow-2xl bottom-37.5 right-52 top-px drop-shadow-black lg:right-44 lg:top-30 lg:w-190 md:right-10 md:w-130 md:top-56 sm:right-36 sm:top-60 sm:w-130"
+          class="absolute justify-end w-130 object-contain drop-shadow-2xl bottom-37.5 right-36 top-36 drop-shadow-black lg:right-30 lg:top-30 lg:w-190 md:right-60 md:w-130 md:top-56 sm:right-36 sm:top-60 sm:w-130"
         />
         <div
-          class="absolute bottom-20 h-40 right-72 w-112.5 rounded-full bg-white/40 blur-3xl sm:right-44 sm:h-30 sm:w-120"
+          class="absolute bottom-30 h-30 right-72 w-112.5 rounded-full bg-white/40 blur-3xl sm:right-40 sm:bottom-30 sm:h-30 sm:w-120 md:bottom-34 md:left-50 md:w-120 lg:w-160 lg:left-180 lg:bottom-30 lg:h-30"
         ></div>
         <button
           class="text-lg text-white absolute left-48 bottom-48 bg-blue-700 w-48 h-12 rounded-lg duration-500 hover:scale-150 focus:outline-2 focus:outline-white active:bg-gray-700 sm:left-55 sm:bottom-20 sm:w-80 sm:h-16 md:bottom-16 md:left-80 lg:left-48 lg:bottom-44"
@@ -69,9 +83,9 @@
       </div>
     </section>
     <main class="m-20">
-      <div class="gap-x-8 flex w-full">
-        <div class="relative bg-[#E0E3EA] w-155 h-87.5 rounded-xl">
-          <h2 class="absolute text-black text-4xl font-bold bottom-36 left-9">
+      <div class="gap-x-8 gap-y-20 flex w-full flex-col sm:flex-col md:flex-col lg:flex-row">
+        <div class="relative bg-[#E0E3EA] w-130 h-60 rounded-xl sm:w-150 sm:h-60 md:w-210 md:h-80 lg:w-210 lg:h-87.5">
+          <h2 class="absolute text-black text-4xl font-bold bottom-36 left-9 sm:text-4xl md:text-6xl lg:text-4xl">
             NEW ARRIVAL
           </h2>
           <h3
@@ -79,9 +93,9 @@
           >
             Shop Collection ->
           </h3>
-          <img src="./img/Blue.png" class="absolute right-3" />
+          <img src="./img/Blue.png" class="absolute w-60 top-0 right-6 sm:top-0 sm:w-60 sm:right-6 md:top-0 md:w-80" />
         </div>
-        <div class="relative w-87.5 h-87.5 bg-[#E0E3EA] rounded-xl">
+        <div class="relative left-28 w-87.5 h-87.5 bg-[#E0E3EA] rounded-xl sm:left-28 md:left-50 lg:left-0">
           <img src="./img/Pink shoe.png" class="absolute" />
           <h3 class="absolute left-3 bottom-20 text-2xl font-semibold">
             HOT SALE
@@ -90,7 +104,7 @@
             Shop Collection->
           </h4>
         </div>
-        <div class="relative w-87.5 h-87.5 bg-[#E0E3EA] rounded-xl">
+        <div class="relative w-87.5 h-87.5 bg-[#E0E3EA] rounded-xl sm:left-28 md:left-50 lg:left-0">
           <img src="./img/Grey shoe.png" class="absolute left-9 top-2" />
           <h3 class="absolute left-3 bottom-18 text-2xl font-semibold">
             TRAINER
@@ -160,7 +174,7 @@
     </section>
     <section class="m-3">
       <div class="flex gap-20">
-        <div class="relative w-112.5 h-150">
+        <div class="relative w-110 h-150">
           <div class="w-112.5 h-140">
             <img src="/img/Jacket.png" alt="" />
           </div>
@@ -170,7 +184,7 @@
             <p class="inline text-2xl text-gray-500">450</p>
           </div>
         </div>
-        <div class="relative w-112.5 h-150">
+        <div class="relative w-110 h-150">
           <div class="w-112.5 h-140">
             <img src="/img/Jacket2.png" alt="" />
           </div>
@@ -180,7 +194,7 @@
             <p class="inline text-2xl text-gray-500">450</p>
           </div>
         </div>
-        <div class="relative w-112.5 h-150">
+        <div class="relative w-110 h-150">
           <div class="w-112.5 h-140">
             <img src="/img/Jacket3.png" alt="" />
           </div>
