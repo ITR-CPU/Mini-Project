@@ -2,7 +2,27 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.3.2",
     "tailwindcss": "^4.3.2"
-  },"scripts": {
-    "dev":"npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
-  }
+
+  },
+  "name": "mini-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ITR-CPU/Mini-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ITR-CPU/Mini-Project/issues"
+  },
+  "homepage": "https://github.com/ITR-CPU/Mini-Project#readme"
 }
+
